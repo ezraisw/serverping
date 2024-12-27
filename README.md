@@ -17,7 +17,7 @@ The config is located at `config/serverping.json`
     "count": 2
   },
   "playerList": {
-    "enabled": true,
+    "spoofingType": "REPLACE",
     "names": [
       "Ghost",
       "Shepherd"
@@ -25,3 +25,17 @@ The config is located at `config/serverping.json`
   }
 }
 ```
+
+### Player Count (`playerCount`)
+This controls the number that appears when the server is pinged.
+- `enabled`: Whether or not to spoof the number based on the configuration.
+- `maxCount`: The spoofed max player count of the server (2/**20**).
+- `count`: The spoofed online player count of the server (**2**/20).
+
+### Player List (`playerList`)
+This controls the list that appears when you hover your mouse over the player count in the server list.
+- `spoofingType`: The player list spoofing type. This has several values:
+  - `DISABLED`: Disables the spoofing completely.
+  - `ANONYMIZE`: Forcibly anonymizes player names into "Anonymous Player", similar to the "Allow Server Listings: OFF" option in game.
+  - `REPLACE`: Replaces the player list completely with `names`.
+- `names`: The fake list of player names that you want to return. This setting is ignored when `spoofingType` is not `REPLACE`.
