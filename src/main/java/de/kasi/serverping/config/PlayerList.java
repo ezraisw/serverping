@@ -4,11 +4,17 @@ import java.util.Collections;
 import java.util.List;
 
 public class PlayerList {
-    private boolean enabled = false;
+    public static enum SpoofingType {
+        DISABLED,
+        REPLACE,
+        ANONYMIZE,
+    }
+
+    private SpoofingType spoofingType = SpoofingType.DISABLED;
     private List<String> names = List.of();
 
-    public boolean isEnabled() {
-        return enabled;
+    public SpoofingType getSpoofingType() {
+        return spoofingType;
     }
 
     public List<String> getNames() {
