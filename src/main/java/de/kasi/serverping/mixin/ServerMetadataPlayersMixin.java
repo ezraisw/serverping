@@ -23,23 +23,23 @@ public class ServerMetadataPlayersMixin {
     private List<GameProfile> sample;
 
     @Inject(method = "max()I", at = @At("HEAD"), cancellable = true)
-    private void replaceMax(CallbackInfoReturnable<Integer> ci) {
+    private void replaceMax(CallbackInfoReturnable<Integer> cir) {
         ServerPingConfig config = ConfigManager.getConfig();
         if (config == null || !config.getPlayerCount().isEnabled()) {
             return;
         }
 
-        ci.setReturnValue(config.getPlayerCount().getMaxCount());
+        cir.setReturnValue(config.getPlayerCount().getMaxCount());
     }
 
     @Inject(method = "online()I", at = @At("HEAD"), cancellable = true)
-    private void replaceOnline(CallbackInfoReturnable<Integer> ci) {
+    private void replaceOnline(CallbackInfoReturnable<Integer> cir) {
         ServerPingConfig config = ConfigManager.getConfig();
         if (config == null || !config.getPlayerCount().isEnabled()) {
             return;
         }
 
-        ci.setReturnValue(config.getPlayerCount().getCount());
+        cir.setReturnValue(config.getPlayerCount().getCount());
     }
 
     @Inject(method = "sample()Ljava/util/List;", at = @At("HEAD"), cancellable = true)
