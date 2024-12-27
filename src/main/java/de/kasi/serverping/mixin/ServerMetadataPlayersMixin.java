@@ -35,19 +35,25 @@ public class ServerMetadataPlayersMixin {
     }
 
     @Inject(method = "sample()Ljava/util/List;", at = @At("HEAD"), cancellable = true)
-    private void replaceSample(CallbackInfoReturnable<List<GameProfile>> ci) {
+    private void replaceSample(CallbackInfoReturnable<List<GameProfile>> cir) {
         ServerPingConfig config = ConfigManager.getConfig();
         if (config == null || !config.getPlayerList().isEnabled()) {
             return;
         }
 
         List<String> names = config.getPlayerList().getNames();
-        ArrayList<GameProfile> profiles = new ArrayList<>(names.size());
 
+        // Optimization when using empty player lists.
+        if (names.isEmpty()) {
+            cir.setReturnValue(List.of());
+            return;
+        }
+
+        List<GameProfile> profiles = new ArrayList<>(names.size());
         for (String name : names) {
             profiles.add(new GameProfile(UUID.nameUUIDFromBytes(name.getBytes()), name));
         }
 
-        ci.setReturnValue(profiles);
+        cir.setReturnValue(profiles);
     }
 }
