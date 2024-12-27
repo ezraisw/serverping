@@ -2,9 +2,9 @@
   "required": true,
   "minVersion": "0.8",
   "package": "de.kasi.serverping.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_17",
   "server": [
-    "PlayersMixin"
+    "ServerMetadataPlayersMixin"
   ],
   "injectors": {
     "defaultRequire": 1

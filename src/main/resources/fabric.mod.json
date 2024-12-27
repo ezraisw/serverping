@@ -2,16 +2,13 @@
   "schemaVersion": 1,
   "id": "serverping",
   "version": "${version}",
-
   "name": "Server Ping",
   "description": "Allows spoofing the player list and count",
   "authors": [
     "redstonekasi"
   ],
-
   "license": "MIT",
   "icon": "assets/serverping/icon.png",
-
   "environment": "server",
   "entrypoints": {
     "server": [
@@ -21,7 +18,6 @@
   "mixins": [
     "serverping.mixins.json"
   ],
-
   "depends": {
     "fabricloader": ">=0.7.4",
     "minecraft": ">=1.14"
