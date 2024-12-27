@@ -1,5 +1,6 @@
 package de.kasi.serverping.config;
 
+import java.util.Collections;
 import java.util.List;
 
 public class PlayerList {
@@ -11,6 +12,6 @@ public class PlayerList {
     }
 
     public List<String> getNames() {
-        return names;
+        return Collections.unmodifiableList(names);
     }
 }
